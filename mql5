@@ -1,0 +1,160 @@
+mql5
+//+------------------------------------------------------------------+
+//|                                        Blue Sonic Donchian MT4   |
+//|                                            forexroboteasy.com    |
+//|                                                  Forex Robot Easy Team   |
+//+------------------------------------------------------------------+
+
+// Include necessary libraries and define variables
+#property copyright 'forexroboteasy.com'
+#property link      'https://www.forexroboteasy.com'
+#property version   '1.00'
+#property strict
+
+extern int period = 20; // Period for Donchian Channel Indicator
+
+//+------------------------------------------------------------------+
+//| Custom indicator initialization function                         |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+   // Register the custom indicator
+   IndicatorSetString(INDICATOR_SHORTNAME, 'Blue Sonic Donchian MT4');
+
+   return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//| Custom indicator iteration function                              |
+//+------------------------------------------------------------------+
+int OnCalculate(const int rates_total,
+                const int prev_calculated,
+                const datetime &time[],
+                const double &open[],
+                const double &high[],
+                const double &low[],
+                const double &close[],
+                const long &tick_volume[],
+                const long &volume[],
+                const int &spread[])
+{
+   // Calculate the Donchian Channel
+   double upper_channel_line = 0.0;
+   double lower_channel_line = 0.0;
+   double highest_high = 0.0;
+   double lowest_low = 0.0;
+   
+   for (int i = period; i < rates_total; i++)
+   {
+      highest_high = High[i];
+      lowest_low = Low[i];
+      
+      for (int j = i - period + 1; j <= i; j++)
+      {
+         if (High[j] > highest_high)
+            highest_high = High[j];
+         
+         if (Low[j] < lowest_low)
+            lowest_low = Low[j];
+      }
+      
+      upper_channel_line = highest_high;
+      lower_channel_line = lowest_low;
+      
+      // Print the channel lines for each candle
+      Print('Upper Channel Line: ', upper_channel_line);
+      Print('Lower Channel Line: ', lower_channel_line);
+   }
+   
+   return(rates_total);
+}
+
+//+------------------------------------------------------------------+
+//| Custom trade execution function                                   |
+//+------------------------------------------------------------------+
+void ExecuteTrades()
+{
+   // Place trades based on Donchian Channel Indicator readings
+   // Add your trade execution logic here
+   // ...
+}
+
+//+------------------------------------------------------------------+
+//| Custom trade management function                                 |
+//+------------------------------------------------------------------+
+void ManageTrades()
+{
+   // Manage open trades based on Donchian Channel Indicator readings
+   // Add your trade management logic here
+   // ...
+}
+
+//+------------------------------------------------------------------+
+//| Custom optimization function                                      |
+//+------------------------------------------------------------------+
+void OptimizeAlgorithm()
+{
+   // Optimize the algorithm for smooth performance and efficient execution
+   // Add your optimization logic here
+   // ...
+}
+
+//+------------------------------------------------------------------+
+//| Custom security and user data protection function                |
+//+------------------------------------------------------------------+
+void SecureUserData()
+{
+   // Secure user data and ensure data protection
+   // Add your security logic here
+   // ...
+}
+
+//+------------------------------------------------------------------+
+//| Custom testing function                                           |
+//+------------------------------------------------------------------+
+void PerformTesting()
+{
+   // Perform rigorous testing to ensure reliability and accuracy
+   // Add your testing logic here
+   // ...
+}
+
+//+------------------------------------------------------------------+
+//| Custom code documentation function                               |
+//+------------------------------------------------------------------+
+void DocumentCode()
+{
+   // Document the code for future modifications and updates
+   // Add necessary comments and documentation here
+   // ...
+}
+
+//+------------------------------------------------------------------+
+//| Custom collaboration function                                     |
+//+------------------------------------------------------------------+
+void CollaborateWithTeam()
+{
+   // Collaborate with the development team to ensure compatibility
+   // Add your collaboration logic here
+   // ...
+}
+
+//+------------------------------------------------------------------+
+//| Custom deadline and progress update function                      |
+//+------------------------------------------------------------------+
+void UpdateProgress()
+{
+   // Adhere to strict deadlines and provide progress updates
+   // Add your progress update logic here
+   // ...
+}
+
+//+------------------------------------------------------------------+
+//| Custom user instructions and documentation function              |
+//+------------------------------------------------------------------+
+void ProvideInstructions()
+{
+   // Provide comprehensive user instructions and documentation
+   // Add necessary comments and documentation here
+   // ...
+}
